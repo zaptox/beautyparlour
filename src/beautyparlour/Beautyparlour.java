@@ -10,6 +10,7 @@ package beautyparlour;
  * @author hp
  */
 import beautyparlour.db.DbConnection;
+import beautyparlour.frames.ServiceForm;
 public class Beautyparlour {
 
     /**
@@ -19,6 +20,7 @@ public class Beautyparlour {
         // TODO code application logic here
         System.out.print("ok");
         DbConnection.load();
+       new  ServiceForm().setVisible(true);
         
     }
     
