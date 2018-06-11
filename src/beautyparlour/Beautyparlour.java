@@ -24,7 +24,7 @@ public class Beautyparlour {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.print("ok");
-//        DbConnection.load();
+        DbConnection.load();
 try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
