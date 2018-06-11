@@ -107,9 +107,11 @@ public class ServiceForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(null);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonBack.setBackground(new java.awt.Color(102, 204, 255));
@@ -117,11 +119,6 @@ public class ServiceForm extends javax.swing.JFrame {
         jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack.setText("Back");
         jButtonBack.setFocusPainted(false);
-        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBackActionPerformed(evt);
-            }
-        });
         jPanel1.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 110, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -146,44 +143,24 @@ public class ServiceForm extends javax.swing.JFrame {
         jButtoSave.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtoSave.setForeground(new java.awt.Color(255, 255, 255));
         jButtoSave.setText("Save");
-        jButtoSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtoSaveActionPerformed(evt);
-            }
-        });
         jPanel1.add(jButtoSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 220, 40));
 
         jButtonClear1.setBackground(new java.awt.Color(102, 204, 255));
         jButtonClear1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonClear1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonClear1.setText("Clear");
-        jButtonClear1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonClear1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jButtonClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 220, 40));
 
         jButtonUpdate.setBackground(new java.awt.Color(102, 204, 255));
         jButtonUpdate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUpdate.setText("Update");
-        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUpdateActionPerformed(evt);
-            }
-        });
         jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 220, 40));
 
         jButtonDelete.setBackground(new java.awt.Color(102, 204, 255));
         jButtonDelete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDelete.setText("Delete");
-        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteActionPerformed(evt);
-            }
-        });
         jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 220, 40));
 
         jTableService.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -216,16 +193,6 @@ public class ServiceForm extends javax.swing.JFrame {
         jTableService.setGridColor(new java.awt.Color(0, 0, 51));
         jTableService.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jTableService.setSelectionForeground(new java.awt.Color(0, 240, 0));
-        jTableService.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTableServiceMouseReleased(evt);
-            }
-        });
-        jTableService.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTableServiceKeyReleased(evt);
-            }
-        });
         jScrollPane3.setViewportView(jTableService);
         if (jTableService.getColumnModel().getColumnCount() > 0) {
             jTableService.getColumnModel().getColumn(0).setMinWidth(70);
@@ -241,16 +208,6 @@ public class ServiceForm extends javax.swing.JFrame {
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSerach.setBorder(null);
         jTextFieldSerach.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jTextFieldSerach.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSerachActionPerformed(evt);
-            }
-        });
-        jTextFieldSerach.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextFieldSerachKeyReleased(evt);
-            }
-        });
         jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, 200, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -278,12 +235,6 @@ public class ServiceForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-
-        //new HomePage().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jTextFieldCompanyNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCompanyNameMouseClicked
 
@@ -329,86 +280,6 @@ public class ServiceForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCompanyDealerNameKeyPressed
 
-    private void jButtoSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoSaveActionPerformed
-        String service_name = this.jTextFieldServiceName.getText();
-        String cost = this.jTextFieldCost.getText();
-    
-
-        if (service_name.equals("") || cost.equals("")) {
-             new playAudio().playErrorSound();
-            JOptionPane.showMessageDialog(this, "Fill the fields");
-        } else {
-            double service_cost=Double.parseDouble(cost);
-            serviceDao.addService(new ServiceBeans(0, service_name, service_cost, CurrentDate.getCurrentDate(),0));
-           new playAudio().playSuccessSound();
-            
-            showInTable();
-            ClearFields();
-        }
-
-
-    }//GEN-LAST:event_jButtoSaveActionPerformed
-
-    private void jButtonClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClear1ActionPerformed
-        // TODO add your handling code here:
-      ClearFields();
-    
-
-
-    }//GEN-LAST:event_jButtonClear1ActionPerformed
-
-    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
-      int service_id=service_list.get(this.jTableService.getSelectedRow()).getService_id();
-
-        String service_name = this.jTextFieldServiceName.getText();
-        String cost = this.jTextFieldCost.getText();
-        
-        String service_date=CurrentDate.getCurrentDate();
-    
-
-        if (service_name.equals("") || cost.equals("")) {
-            
-            new playAudio().playErrorSound();
-            JOptionPane.showMessageDialog(this, "Fill the Fields");
-            
-        } else {
-            double service_cost =Double.parseDouble(cost);
-            serviceDao.updateService(new ServiceBeans(service_id, service_name, service_cost, service_date, 0));
-
-         
-            showInTable();
-            new playAudio().playSuccessSound();
-            jButtonUpdate.setEnabled(false);
-            jButtoSave.setEnabled(true);
-            jButtonClear1.setEnabled(true);
-
-         ClearFields();
-           
-            jButtonDelete.setEnabled(false);
-        }
-
-
-    }//GEN-LAST:event_jButtonUpdateActionPerformed
-
-    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        // TODO add your handling code here:
-
-       int service_id=service_list.get(this.jTableService.getSelectedRow()).getService_id();
-
-      
-       serviceDao.deleteService(new ServiceBeans(service_id, "", 0.0, "",0));
-
-      
-        showInTable();
-        jButtonUpdate.setEnabled(false);
-        jButtoSave.setEnabled(true);
-        jButtonClear1.setEnabled(true);
-        jButtonDelete.setEnabled(false);
-      ClearFields();
-        
-
-    }//GEN-LAST:event_jButtonDeleteActionPerformed
-
     private void jTableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseClicked
 
 
@@ -418,47 +289,9 @@ public class ServiceForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextFieldSerachMouseClicked
 
-    private void jTextFieldSerachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSerachActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSerachActionPerformed
-
     private void jTextFieldSerachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyPressed
 
     }//GEN-LAST:event_jTextFieldSerachKeyPressed
-
-    private void jTextFieldSerachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyReleased
-        // TODO add your handling code here:
-        String searchData = this.jTextFieldSerach.getText();
-        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchData));
-
-    }//GEN-LAST:event_jTextFieldSerachKeyReleased
-
-    private void jTableServiceMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableServiceMouseReleased
-        ServiceBeans serviceBeans = null;
-
-        try {
-
-            int service_id=service_list.get(this.jTableService.getSelectedRow()).getService_id();
-            
-            serviceBeans = serviceDao.getServiceById(service_id);
-           
-        } catch (Exception e) {
-            System.out.println("" + e.getMessage());
-        }
-        this.jTextFieldServiceName.setText("" + serviceBeans.getService_name());
-        this.jTextFieldCost.setText("" + serviceBeans.getService_cost());
-
-        this.jButtonUpdate.setEnabled(true);
-        this.jButtonDelete.setEnabled(true);
-        jButtoSave.setEnabled(false);
-        jButtonClear1.setEnabled(false);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableServiceMouseReleased
-
-    private void jTableServiceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableServiceKeyReleased
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jTableServiceKeyReleased
 
     /**
      * @param args the command line arguments
