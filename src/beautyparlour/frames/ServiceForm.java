@@ -119,6 +119,11 @@ public class ServiceForm extends javax.swing.JFrame {
         jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack.setText("Back");
         jButtonBack.setFocusPainted(false);
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 110, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -293,6 +298,12 @@ public class ServiceForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextFieldSerachKeyPressed
 
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new HomePage().setVisible(true);
+    }//GEN-LAST:event_jButtonBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -354,6 +365,8 @@ public class ServiceForm extends javax.swing.JFrame {
 void ClearFields(){
       jTextFieldServiceName.setText("");
         this.jTextFieldCost.setText("");
+
+        
 }
 
 }

@@ -170,6 +170,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         //        new CompanyProduct().setVisible(true);
         //        this.dispose();
+        this.dispose();
         new ServiceForm().setVisible(true);
     }//GEN-LAST:event_jButtonProductActionPerformed
 
