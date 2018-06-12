@@ -48,10 +48,17 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
     }
 
   @Override
-    public ArrayList<SaleDetailBeans> getAllSaleDetailbyCustomerId(int customer_id1) {
+    public ArrayList<SaleDetailBeans> getAllSaleDetailbyCustomerId(int customer_id1,String date ,int saleid ) {
         ArrayList<SaleDetailBeans> sale_details_list = new ArrayList<>();
         try {
-            String query = "SELECT s.`sale_id`,s.`sale_date`,s.`price`,c.`customer_debt` FROM sale_detail s INNER JOIN customer c ON s.`customer_id`=c.`customer_id` WHERE c.`customer_id`= "+customer_id1;
+            String query = "SELECT  s.`sale_detail_id`,s.`sale_id`,c.`customer_id`,s.`customer_id`,\n" +
+"                 ser.`service_id`,\n" +
+"                    s.`price`,s.`sale_date` FROM sale_detail s\n" +
+"                    INNER JOIN customer c ON \n" +
+"                    s.`customer_id`=c.`customer_id`INNER JOIN \n" +
+"                    services ser ON s.`service_id`=ser.`service_id` \n" +
+"                    INNER JOIN sale sl ON s.sale_id=sl.`sale_id`\n" +
+"                    WHERE s.customer_id='"+customer_id1+"' AND s.`sale_date`='"+date+"' AND s.`sale_id`="+saleid+"  ORDER BY s.sale_detail_id DESC";
             Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
@@ -62,11 +69,9 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
              int service_id= rs.getInt("service_id");
              String sale_date = rs.getString("sale_date");
              double price = rs.getDouble("price");
+           
              
-                    
-             
-
-                sale_details_list.add(new SaleDetailBeans(sale_detail_id, sale_id, customer_id, sale_id, query, sale_id));
+           sale_details_list.add(new SaleDetailBeans(sale_detail_id, sale_id, customer_id, service_id, sale_date, price));
 
             }
         } catch (Exception e) {
@@ -76,6 +81,7 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
 
         return sale_details_list;
     }
+
 
     @Override
     public int modifySaleDetails(SaleDetailBeans details) {

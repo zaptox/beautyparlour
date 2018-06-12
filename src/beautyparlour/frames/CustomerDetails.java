@@ -10,9 +10,11 @@ import beautyparlour.bean.SaleDetailBeans;
 import beautyparlour.dao.CustomerDao;
 import beautyparlour.dao.SaleDao;
 import beautyparlour.dao.SaleDetailsDao;
+import beautyparlour.dao.ServiceDao;
 import beautyparlour.daoImpl.CustomerDaoImpl;
 import beautyparlour.daoImpl.SaleDaoImpl;
 import beautyparlour.daoImpl.SaleDetailDapImpl;
+import beautyparlour.daoImpl.ServiceDaoImpl;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
@@ -47,6 +49,7 @@ public class CustomerDetails extends javax.swing.JFrame {
     ArrayList<SaleDetailBeans> sales_detail_list;
     SaleDetailsDao saleDeatail;
     SaleDao sale;
+    ServiceDao servicedao;
 
     CustomerDao customerDao;
    // DebtDetailDao debtDao;
@@ -54,48 +57,29 @@ public class CustomerDetails extends javax.swing.JFrame {
 
     public CustomerDetails() {
         initComponents();
-        saleDeatail = new SaleDetailDapImpl();
-        sale = new SaleDaoImpl();
-        tableModelCustomerSaleDetail = (DefaultTableModel) this.jTableCustomerSaleDetail.getModel();
-        tableModelCustomerSale = (DefaultTableModel) this.jTableCustomerSale.getModel();
-
-        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomerSaleDetail);
-        this.jTableCustomerSaleDetail.setRowSorter(rowSorter);
-
-        JTableHeader header = this.jTableCustomerSaleDetail.getTableHeader();
-        header.setBackground(new Color(0, 204, 0));
-        header.setForeground(new Color(255, 255, 255));
-        header.setFont(new Font("SansSerif", Font.BOLD, 18));
-
-        JTableHeader header1 = this.jTableCustomerSale.getTableHeader();
-        header1.setBackground(new Color(0, 204, 0));
-        header1.setForeground(new Color(255, 255, 255));
-        header1.setFont(new Font("SansSerif", Font.BOLD, 18));
-
-        this.jLabelAddMoney.setVisible(false);
-
-
-    }
-
+       }
+int customer_id;
     public CustomerDetails(int customer_id) {
+        
         initComponents();
+        this.customer_id=customer_id;
         saleDeatail = new SaleDetailDapImpl();
 //        debtDao = new DebtDaoImpl();
         sale = new SaleDaoImpl();
-
+        servicedao = new ServiceDaoImpl();
         tableModelCustomerSaleDetail = (DefaultTableModel) this.jTableCustomerSaleDetail.getModel();
         rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomerSaleDetail);
         this.jTableCustomerSaleDetail.setRowSorter(rowSorter);
         tableModelCustomerSale = (DefaultTableModel) this.jTableCustomerSale.getModel();
 
         JTableHeader header = this.jTableCustomerSaleDetail.getTableHeader();
-        header.setBackground(new Color(0, 204, 0));
+       header.setBackground(new Color(102,204,255));
         header.setForeground(new Color(255, 255, 255));
-        header.setFont(new Font("SansSerif", Font.BOLD, 18));
+        header.setFont(new Font("SansSerif", Font.BOLD, 14));
         JTableHeader header1 = this.jTableCustomerSale.getTableHeader();
-        header1.setBackground(new Color(0, 204, 0));
-        header1.setForeground(new Color(255, 255, 255));
-        header1.setFont(new Font("SansSerif", Font.BOLD, 18));
+         header.setBackground(new Color(102,204,255));
+        header.setForeground(new Color(255, 255, 255));
+        header.setFont(new Font("SansSerif", Font.BOLD, 14));
 
         customerDao = new CustomerDaoImpl();
         this.jButtonUpdateMoney.setVisible(false);
@@ -103,9 +87,10 @@ public class CustomerDetails extends javax.swing.JFrame {
         this.jTextFieldUpdateMoney.setVisible(false);
         this.jSeparatorUpdate.setVisible(false);
         this.jLabelCustomerName.setText(customerDao.getCustomerById(customer_id).getCustomer_name());
-        showInCustomerTable(customer_id);
+    //showInCustomerSalesDetailTable(customer_id,"2018-06-12");
         showInSaleTable(customer_id);
-        showCustomerDebt(customer_id);
+        this.jLabelCustomerDebt.setText(""+ customerDao.getCustomerById(customer_id).getCustomer_dept());
+        //showCustomerDebt(customer_id);
         this.jLabelAddMoney.setVisible(false);
         cust_id = customer_id;
         
@@ -139,7 +124,6 @@ public class CustomerDetails extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jTextFieldUpdateMoney = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButtonUpdateMoney1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableCustomerSale = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -148,7 +132,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTableCustomerSaleDetail.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -158,14 +142,14 @@ public class CustomerDetails extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sale Id ", "Product Name", "Quantity", "Price (Rs)", "Paid", "Remaining", "Reference", "Sale Date"
+                "Sale Id ", "Services", "cost"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -194,11 +178,6 @@ public class CustomerDetails extends javax.swing.JFrame {
             jTableCustomerSaleDetail.getColumnModel().getColumn(1).setMinWidth(110);
             jTableCustomerSaleDetail.getColumnModel().getColumn(1).setPreferredWidth(110);
             jTableCustomerSaleDetail.getColumnModel().getColumn(1).setMaxWidth(110);
-            jTableCustomerSaleDetail.getColumnModel().getColumn(2).setPreferredWidth(5);
-            jTableCustomerSaleDetail.getColumnModel().getColumn(3).setPreferredWidth(20);
-            jTableCustomerSaleDetail.getColumnModel().getColumn(4).setPreferredWidth(20);
-            jTableCustomerSaleDetail.getColumnModel().getColumn(5).setPreferredWidth(20);
-            jTableCustomerSaleDetail.getColumnModel().getColumn(6).setPreferredWidth(30);
         }
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 330, 470));
@@ -231,7 +210,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         jLabelAddMoney.setText("Add Money:");
         jPanel1.add(jLabelAddMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 110, -1));
 
-        jLabelCustomerName.setBackground(new java.awt.Color(0, 204, 204));
+        jLabelCustomerName.setBackground(new java.awt.Color(102, 204, 255));
         jLabelCustomerName.setFont(new java.awt.Font("Trajan Pro", 1, 36)); // NOI18N
         jLabelCustomerName.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCustomerName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -252,7 +231,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
 
-        jLabelCustomerDebt.setBackground(new java.awt.Color(0, 204, 204));
+        jLabelCustomerDebt.setBackground(new java.awt.Color(102, 204, 255));
         jLabelCustomerDebt.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 36)); // NOI18N
         jLabelCustomerDebt.setForeground(new java.awt.Color(255, 0, 0));
         jLabelCustomerDebt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -264,7 +243,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         jLabel4.setText("Search");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 22, 60, 30));
 
-        jButtonUpdateMoney.setBackground(new java.awt.Color(0, 204, 0));
+        jButtonUpdateMoney.setBackground(new java.awt.Color(102, 204, 255));
         jButtonUpdateMoney.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonUpdateMoney.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUpdateMoney.setText("Update Money");
@@ -275,7 +254,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonUpdateMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 230, 30));
 
-        jButtonUpdate.setBackground(new java.awt.Color(0, 204, 0));
+        jButtonUpdate.setBackground(new java.awt.Color(102, 204, 255));
         jButtonUpdate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUpdate.setText("Update");
@@ -314,17 +293,6 @@ public class CustomerDetails extends javax.swing.JFrame {
         jLabel5.setText("Remaining Money:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, -1));
 
-        jButtonUpdateMoney1.setBackground(new java.awt.Color(0, 204, 0));
-        jButtonUpdateMoney1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonUpdateMoney1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonUpdateMoney1.setText("Show Debt Details");
-        jButtonUpdateMoney1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUpdateMoney1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonUpdateMoney1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 230, 30));
-
         jTableCustomerSale.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jTableCustomerSale.setForeground(new java.awt.Color(0, 0, 51));
         jTableCustomerSale.setModel(new javax.swing.table.DefaultTableModel(
@@ -336,7 +304,7 @@ public class CustomerDetails extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -350,7 +318,7 @@ public class CustomerDetails extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTableCustomerSale.setToolTipText("Products");
+        jTableCustomerSale.setToolTipText("Customer Record");
         jTableCustomerSale.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTableCustomerSale.setGridColor(new java.awt.Color(0, 0, 51));
         jTableCustomerSale.setSelectionBackground(new java.awt.Color(255, 255, 255));
@@ -358,6 +326,9 @@ public class CustomerDetails extends javax.swing.JFrame {
         jTableCustomerSale.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableCustomerSaleMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTableCustomerSaleMouseReleased(evt);
             }
         });
         jScrollPane4.setViewportView(jTableCustomerSale);
@@ -377,12 +348,12 @@ public class CustomerDetails extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 570));
 
-        jLabel1.setBackground(new java.awt.Color(0, 204, 0));
+        jLabel1.setBackground(new java.awt.Color(102, 204, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("All rights reserved @Kashtkarzarai|2018");
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
+        jLabel1.setText("Signature Beauty Parlour");
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 2, true));
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 564, 1150, 30));
 
@@ -415,8 +386,8 @@ public class CustomerDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSerachKeyReleased
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        //new CustomerRecords().setVisible(true);
-        //this.dispose();
+        new ShowCustomerPage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jButtonUpdateMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateMoneyActionPerformed
@@ -450,10 +421,7 @@ public class CustomerDetails extends javax.swing.JFrame {
 
         this.jSeparatorUpdate.setVisible(true);
         this.jButtonUpdateMoney.setVisible(true);
-        this.jCheckBoxCustomerName.setVisible(true);
-        this.jCheckBoxOther.setVisible(true);
-        this.jSeparatorother.setVisible(true);
-        this.jTextFieldOther.setVisible(true);
+     
 
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
@@ -473,15 +441,18 @@ public class CustomerDetails extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUpdateMoneyKeyReleased
 
-    private void jButtonUpdateMoney1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateMoney1ActionPerformed
-        // TODO add your handling code here:
-        new DebtDetailJDialog(this, true, cust_id, customerDao.getCustomerById(cust_id).getCustomer_name()).setVisible(true);
-
-    }//GEN-LAST:event_jButtonUpdateMoney1ActionPerformed
-
     private void jTableCustomerSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerSaleMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableCustomerSaleMouseClicked
+
+    private void jTableCustomerSaleMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerSaleMouseReleased
+        // TODO add your handling code here:
+       String date = sale_list.get( this.jTableCustomerSale.getSelectedRow()).getSale_date();
+       int sale_id=sale_list.get( this.jTableCustomerSale.getSelectedRow()).getSale_id();
+      //  System.out.println(""+date);
+        showInCustomerSalesDetailTable(customer_id,date,sale_id);
+        
+    }//GEN-LAST:event_jTableCustomerSaleMouseReleased
 
     /**
      * @param args the command line arguments
@@ -521,26 +492,22 @@ public class CustomerDetails extends javax.swing.JFrame {
         });
     }
 
-    public void showInCustomerTable(int customer_id) {
+    public void showInCustomerSalesDetailTable(int customer_id,String date,int saleId ) {
         tableModelCustomerSaleDetail.setRowCount(0);
         int counter = 1;
-        sale_details_list = saleDeatail.getAllSaleDetailbyCustomerId(customer_id);
+        ServiceDao ser = new ServiceDaoImpl();
+        sale_details_list = saleDeatail.getAllSaleDetailbyCustomerId(customer_id,date,saleId);
         for (SaleDetailBeans salesDetails : sale_details_list) {
             Vector V = new Vector();
-            V.add(salesDetails.getSale_detail_id());
-            V.add(salesDetails.getP_name() + " " + salesDetails.getPacketsize() + salesDetails.getUom());
-            V.add(salesDetails.getQuantity());
+            V.add(salesDetails.getSale_id());
+            V.add(ser.getServiceById(salesDetails.getService_id()).getService_name());
             V.add(salesDetails.getPrice());
-//            V.add(salesDetails.)
-            V.add(salesDetails.getPaid());
-            V.add(salesDetails.getPrice() - salesDetails.getPaid());
-            V.add(salesDetails.getReference());
-
-            V.add(salesDetails.getSale_date());
+            
 
             tableModelCustomerSaleDetail.addRow(V);
         }
     }
+
 
     public void showInSaleTable(int customer_id) {
         tableModelCustomerSale.setRowCount(0);
@@ -551,8 +518,9 @@ public class CustomerDetails extends javax.swing.JFrame {
             V.add(salesDetails.getSale_date());
             V.add(salesDetails.getTotal_bill());
             V.add(salesDetails.getPaid());
-            V.add((salesDetails.getTotal_bill()) - salesDetails.getPaid());
-            V.add(salesDetails.getReference());
+            V.add(salesDetails.getTotal_bill()-salesDetails.getPaid());
+           
+           
 
             tableModelCustomerSale.addRow(V);
         }
@@ -570,7 +538,6 @@ public class CustomerDetails extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JButton jButtonUpdateMoney;
-    private javax.swing.JButton jButtonUpdateMoney1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

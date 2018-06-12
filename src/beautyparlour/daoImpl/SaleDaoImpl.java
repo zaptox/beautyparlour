@@ -62,6 +62,36 @@ public class SaleDaoImpl implements SaleDao {
     public SaleBeans getSaleById(int sale_id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+     @Override
+    public ArrayList<SaleBeans> getAllSalesByCustomId(int custo_id) {
+  ArrayList<SaleBeans> sale_list = new ArrayList<>();
+        try {
+            String query = "SELECT  sl.sale_id,sl.total_bill, sl.paid, sl.sale_date,c.customer_name FROM customer c,sale sl WHERE  sl.`customer_id`=c.`customer_id` AND sl.`customer_id`="+custo_id;
+            Statement ps = con.createStatement();
+
+            ResultSet rs = ps.executeQuery(query);
+            while (rs.next()) {
+                int sale_id = rs.getInt("sale_id");
+                double total_bill = rs.getDouble("total_bill");
+                float paid = rs.getFloat("paid");
+                String sale_date = rs.getString("sale_date");
+                String customer_name = rs.getString("customer_name");
+                
+                sale_list.add(new SaleBeans(sale_id, custo_id, 1, "", 0, total_bill, paid, sale_date));
+              
+                
+                
+
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error in getting Customer");
+            e.printStackTrace();
+        }
+
+        return sale_list;
+    }
 
     @Override
     public int getSaleId() {

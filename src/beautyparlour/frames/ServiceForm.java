@@ -441,7 +441,7 @@ public class ServiceForm extends javax.swing.JFrame {
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
 
-        //new HomePage().setVisible(true);
+        new HomePage().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 

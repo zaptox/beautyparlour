@@ -20,5 +20,5 @@ public interface SaleDao {
     public int modifySale(SaleBeans sale);
     public SaleBeans getSaleById(int sale_id);
     public int getSaleId();
-   
+    public ArrayList<SaleBeans> getAllSalesByCustomId(int custo_id);
 }
