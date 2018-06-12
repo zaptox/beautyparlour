@@ -62,17 +62,17 @@ public class SalePage extends javax.swing.JFrame {
         tableModelServices = (DefaultTableModel) this.jTable1.getModel();
         tableModel2 = (DefaultTableModel) this.jTable2.getModel();
         customer_id = -1;
-
-//        addField.setEnabled(false);
+        removeService.setEnabled(false);
+        addField.setEnabled(false);
         nameField.setEnabled(false);
         numberField.setEnabled(false);
         addressfield.setEnabled(false);
         JTableHeader header = this.jTable1.getTableHeader();
-        header.setBackground(new Color(102,204,255));
+        header.setBackground(new Color(102, 204, 255));
         header.setForeground(new Color(255, 255, 255));
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
         JTableHeader header2 = this.jTable2.getTableHeader();
-        header2.setBackground(new Color(102,204,255));
+        header2.setBackground(new Color(102, 204, 255));
         header2.setForeground(new Color(255, 255, 255));
         header2.setFont(new Font("SansSerif", Font.BOLD, 18));
         rowSorter = new TableRowSorter<DefaultTableModel>(tableModelServices);
@@ -87,7 +87,6 @@ public class SalePage extends javax.swing.JFrame {
 
     }
 
-    
 //
     public SalePage(CustomerBeans customer) {
         initComponents();
@@ -99,22 +98,23 @@ public class SalePage extends javax.swing.JFrame {
         nameField.setEnabled(false);
         numberField.setEnabled(false);
         addressfield.setEnabled(false);
-        
+
         tableModelServices = (DefaultTableModel) this.jTable1.getModel();
         tableModel2 = (DefaultTableModel) this.jTable2.getModel();
         serviceDao = new ServiceDaoImpl();
         saleDao = new SaleDaoImpl();
         saleDetailDao = new SaleDetailDapImpl();
-        
+        removeService.setEnabled(false);
+
         customer_id = customer.getCustomer_id();
         this.getContentPane().setBackground(Color.white);
 
         JTableHeader header = this.jTable1.getTableHeader();
-        header.setBackground(new Color(102,204,255));
+        header.setBackground(new Color(102, 204, 255));
         header.setForeground(new Color(255, 255, 255));
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
         JTableHeader header2 = this.jTable2.getTableHeader();
-        header2.setBackground(new Color(102,204,255));
+        header2.setBackground(new Color(102, 204, 255));
         header2.setForeground(new Color(255, 255, 255));
         header2.setFont(new Font("SansSerif", Font.BOLD, 18));
         showInTable();
@@ -605,7 +605,7 @@ public class SalePage extends javax.swing.JFrame {
             System.out.println("" + e.getMessage());
         }
         itemField.setText("Service: " + s.getService_name());
-        
+
         if (sale_customer) {
 
             addField.setEnabled(true);
@@ -617,21 +617,20 @@ public class SalePage extends javax.swing.JFrame {
     private void addFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFieldActionPerformed
         // TODO add your handling code here:
         //        if(jTable1.isRowSelected)
-       
 
-            int service_id_table = Integer.parseInt("" + this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 1));
+        int service_id_table = Integer.parseInt("" + this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 1));
 
 //            int user_id_table = productList.get(id).getProduct_id();
 //
 //            DbManagerInterface ob = new DbManager();
-            ServiceBeans s = serviceDao.getServiceById(service_id_table);
+        ServiceBeans s = serviceDao.getServiceById(service_id_table);
 //            int quantity = (int) jSpinner1.getValue();
 //            int product_quantity = (int) jTable1.getValueAt(jTable1.getSelectedRow(), 5);
 
-                showInBuy(s);
-                generateButton.setEnabled(true);
-            
-        
+        showInBuy(s);
+        generateButton.setEnabled(true);
+
+
     }//GEN-LAST:event_addFieldActionPerformed
 
     private void showInBuy(ServiceBeans s) {
@@ -644,7 +643,6 @@ public class SalePage extends javax.swing.JFrame {
 //        System.out.println("" + p.getName());
         v.add(s.getService_name());
         v.add(s.getService_cost());
-        
 
         double t_price = s.getService_cost();
 
@@ -671,7 +669,8 @@ public class SalePage extends javax.swing.JFrame {
 //            reference = this.referenceField.getText();
             discount = Float.parseFloat(discountField.getText().toString());
         } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Invalid Discount");
+            discount=0;
+//            JOptionPane.showMessageDialog(this, "Invalid Discount");
         }
         float total_price = Float.parseFloat(totalField.getText().toString());
 
@@ -689,15 +688,15 @@ public class SalePage extends javax.swing.JFrame {
 //                total_priceGot, customer_id, orderedProductList,
 //                sale_customer, 2), reference).setVisible(true);
 
-
     }//GEN-LAST:event_generateButtonActionPerformed
 
     private void jTable2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseReleased
         // TODO add your handling code here:
-
+        
         int i = jTable2.getSelectedRow();
-        ServiceBeans s= selected_services_List.get(i);
-        toRemoveField.setText("Service: "+s.getService_name());
+        ServiceBeans s = selected_services_List.get(i);
+        toRemoveField.setText("Service: " + s.getService_name());
+        removeService.setEnabled(true);
     }//GEN-LAST:event_jTable2MouseReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -715,13 +714,38 @@ public class SalePage extends javax.swing.JFrame {
 
     private void removeServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeServiceActionPerformed
         // TODO add your handling code here:
-        int i = jTable2.getSelectedRow();
-        ServiceBeans s= selected_services_List.get(i);
-        selected_services_List.remove(i);
-        total_price-=s.getService_cost();
-        totalField.setText(""+total_price);
-        
+        int service_remove_id = jTable2.getSelectedRow();
+        removeFromBuy(service_remove_id);
+       
     }//GEN-LAST:event_removeServiceActionPerformed
+
+    private void removeFromBuy(int service_remove_id) {
+        tableModel2.setRowCount(0);
+        ServiceBeans s = selected_services_List.get(service_remove_id);
+        selected_services_List.remove(service_remove_id);
+        total_price -= s.getService_cost();
+        totalField.setText("" + total_price);
+
+        for (ServiceBeans s1 : selected_services_List) {
+            Vector v = new Vector();
+//        int id = p.getCategory_id();
+//        String category = ob.getCategory(id).getName();
+//        System.out.println("" + p.getName());
+            v.add(s1.getService_name());
+            v.add(s1.getService_cost());
+           
+//        total_price_temp = total_price;
+            try {
+                tableModel2.addRow(v);
+            } catch (Exception e) {
+                System.out.println("" + e.getMessage());
+            }
+
+        }
+
+        totalField.setText(total_price + "");
+        removeService.setEnabled(false);
+    }
 
     /**
      * @param args the command line arguments
