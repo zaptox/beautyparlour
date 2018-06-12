@@ -20,9 +20,8 @@ private Double total_price;
 private int customer_id;
 private ArrayList<ServiceBeans> selected_service_list;
 Boolean sale_customer;
-int quantity;
 
-    public PaymentDoneBeans(String date, Float discount, String discount_type, Double total_price, int customer_id, ArrayList<ServiceBeans> selected_service_list, Boolean sale_customer, int quantity) {
+    public PaymentDoneBeans(String date, Float discount, String discount_type, Double total_price, int customer_id, ArrayList<ServiceBeans> selected_service_list, Boolean sale_customer) {
         this.date = date;
         this.discount = discount;
         this.discount_type = discount_type;
@@ -30,8 +29,9 @@ int quantity;
         this.customer_id = customer_id;
         this.selected_service_list = selected_service_list;
         this.sale_customer = sale_customer;
-        this.quantity = quantity;
     }
+
+    
 
     public String getDate() {
         return date;
@@ -89,13 +89,7 @@ int quantity;
         this.sale_customer = sale_customer;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+    
 
     
 

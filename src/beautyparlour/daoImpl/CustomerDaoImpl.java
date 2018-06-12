@@ -155,6 +155,48 @@ public class CustomerDaoImpl implements CustomerDao {
 
     }
     
+        @Override
+    public Double getCustomerDebtByCustomerId(int cust_id) {
+        Double debt = 0.0;
+        try {
+            String query = "SELECT customer_debt FROM customer WHERE customer_id=" + cust_id;
+            Statement ps = con.createStatement();
+
+            ResultSet rs = ps.executeQuery(query);
+            while (rs.next()) {
+                debt = rs.getDouble("customer_debt");
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error in getting Customer debt by customer id");
+            e.printStackTrace();
+        }
+
+        return debt;
+    }
+
+    @Override
+    public int modifyCustomerDebt(int cust_id, double updatedDebt) {
+
+        int i = 0;
+        String query = "UPDATE customer SET customer_debt = "+updatedDebt+" "
+                + "WHERE `customer_id` = "+cust_id;
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+
+            i = ps.executeUpdate();
+        } catch (Exception e) {
+
+            System.out.println("Error in modification of Customer");
+            e.printStackTrace();
+        }
+        return i;
+
+    }
+
+    
+    
+    
     
 
 }

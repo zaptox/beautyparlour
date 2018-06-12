@@ -19,5 +19,7 @@ public interface CustomerDao {
     public int updateCustomer(CustomerBeans customerBeans);
     public int deleteCustomer(CustomerBeans customerBeans);
     public CustomerBeans getCustomerById(int customer_id);
+    public Double getCustomerDebtByCustomerId(int cust_id);
+    public int modifyCustomerDebt(int cust_id, double updatedDebt);
     // public String getCompanyName(int company_id);
 }
