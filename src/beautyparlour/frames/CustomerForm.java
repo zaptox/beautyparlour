@@ -73,6 +73,8 @@ public class CustomerForm extends javax.swing.JFrame {
         header.setForeground(new Color(255, 255, 255));
         header.setFont(new Font("SansSerif", Font.BOLD, 14));
          jButtonSave.setEnabled(true);
+        
+            jButtonClear1.setEnabled(true);
         this.jButtonUpdate.setEnabled(false);
         this.jButtonDelete.setEnabled(false);
         this.jTableCustomer.setRowSorter(rowSorter);
@@ -420,7 +422,8 @@ public class CustomerForm extends javax.swing.JFrame {
         this.jButtonUpdate.setEnabled(true);
         this.jButtonDelete.setEnabled(true);
         jButtonSave.setEnabled(false);
-        jButtonClear1.setEnabled(false);
+         jButtonClear1.setEnabled(true);
+       
         
     }//GEN-LAST:event_jTableCustomerMouseReleased
 
@@ -460,7 +463,7 @@ public class CustomerForm extends javax.swing.JFrame {
             showInTable();
             new playAudio().playSuccessSound();
             jButtonUpdate.setEnabled(false);
-            jButtonCustomer.setEnabled(true);
+            jButtonSave.setEnabled(true);
             jButtonClear1.setEnabled(true);
 
             ClearFields();
@@ -471,7 +474,13 @@ public class CustomerForm extends javax.swing.JFrame {
 
     private void jButtonClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClear1ActionPerformed
         // TODO add your handling code here:
+        showInTable();
         ClearFields();
+         jButtonUpdate.setEnabled(false);
+            jButtonSave.setEnabled(true);
+            jButtonClear1.setEnabled(true);
+                jButtonDelete.setEnabled(false);
+        
     }//GEN-LAST:event_jButtonClear1ActionPerformed
 
     private void jButtonCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCustomerActionPerformed
