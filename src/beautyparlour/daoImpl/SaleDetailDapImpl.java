@@ -47,52 +47,41 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
         return i;
     }
 
-//    @Override
-//    public ArrayList<SaleDetailBeans> getAllSaleDetailbyCustomerId(int customer_id) {
-//        ArrayList<SaleDetailBeans> sale_details_list = new ArrayList<>();
-//        try {
-//            String query = "SELECT  s.`sale_detail_id`,p.`p_name`,c.`customer_name`,s.`quantity`,\n" +
-//"                    cp.`company_name`,sl.total_bill,\n" +
-//"                    s.`price`,u.`uom`,p.`packsize`,s.`sale_date`,sl.paid,sl.reference FROM sale_detail s\n" +
-//"                    INNER JOIN customer c ON \n" +
-//"                    s.`customer_id`=c.`customer_id`INNER JOIN \n" +
-//"                    product p ON s.`product_id`=p.`p_id`INNER JOIN company cp ON \n" +
-//"                    s.`company_id`=cp.`company_id`INNER JOIN uom_table u ON s.`uom_id`=u.`uom_id` inner join sale sl on s.sale_id=sl.sale_id\n" +
-//"                    WHERE s.customer_id="+customer_id+" order by s.sale_detail_id";
-//            Statement ps = con.createStatement();
-//
-//            ResultSet rs = ps.executeQuery(query);
-//            while (rs.next()) {
-//                int sale_detail_id = rs.getInt("sale_detail_id");
-//                String p_name = rs.getString("p_name");
-//                String customer_name = rs.getString("customer_name");
-//                String company_name = rs.getString("company_name");
-//                int quantity = rs.getInt("quantity");
-//                String uom = rs.getString("uom");
-//                int packetsize=rs.getInt("packsize");
-//                String sale_date = rs.getString("sale_date");
-//                double price = rs.getDouble("total_bill");
-//                double paid=rs.getDouble("paid");
-//                String reference=rs.getString("reference");
-//                sale_details_list.add(new SaleDetailBeans(sale_detail_id,packetsize ,quantity, sale_date, price, company_name, customer_name,uom,  p_name,paid,reference));
-//
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Error in getting  customer Sales Details");
-//            e.printStackTrace();
-//        }
-//
-//        return sale_details_list;
-//    }
+  @Override
+    public ArrayList<SaleDetailBeans> getAllSaleDetailbyCustomerId(int customer_id1) {
+        ArrayList<SaleDetailBeans> sale_details_list = new ArrayList<>();
+        try {
+            String query = "SELECT s.`sale_id`,s.`sale_date`,s.`price`,c.`customer_debt` FROM sale_detail s INNER JOIN customer c ON s.`customer_id`=c.`customer_id` WHERE c.`customer_id`= "+customer_id1;
+            Statement ps = con.createStatement();
+
+            ResultSet rs = ps.executeQuery(query);
+            while (rs.next()) {
+             int sale_detail_id = rs.getInt("sale_detail_id");
+             int sale_id = rs.getInt("sale_id");
+             int customer_id = rs.getInt("customer_id");
+             int service_id= rs.getInt("service_id");
+             String sale_date = rs.getString("sale_date");
+             double price = rs.getDouble("price");
+             
+                    
+             
+
+                sale_details_list.add(new SaleDetailBeans(sale_detail_id, sale_id, customer_id, sale_id, query, sale_id));
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error in getting  customer Sales Details");
+            e.printStackTrace();
+        }
+
+        return sale_details_list;
+    }
 
     @Override
     public int modifySaleDetails(SaleDetailBeans details) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public ArrayList<SaleDetailBeans> getAllSaleDetailbyCustomerId(int customer_id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
 }
