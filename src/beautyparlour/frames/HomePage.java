@@ -48,8 +48,8 @@ public class HomePage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 204, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Signature Beauty & Fitness Zone");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/beautyparlour/util/signature_logodone.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
 
         jButtonLogin6.setBackground(new java.awt.Color(102, 204, 255));
         jButtonLogin6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -62,7 +62,7 @@ public class HomePage extends javax.swing.JFrame {
                 jButtonLogin6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 310, 120));
+        jPanel1.add(jButtonLogin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 310, 120));
 
         jButtonProduct.setBackground(new java.awt.Color(102, 204, 255));
         jButtonProduct.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -74,7 +74,7 @@ public class HomePage extends javax.swing.JFrame {
                 jButtonProductActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 310, 120));
+        jPanel1.add(jButtonProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 310, 120));
 
         jButtonLogin9.setBackground(new java.awt.Color(102, 204, 255));
         jButtonLogin9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -86,7 +86,7 @@ public class HomePage extends javax.swing.JFrame {
                 jButtonLogin9ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 310, 120));
+        jPanel1.add(jButtonLogin9, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 310, 120));
 
         jButtonLogin10.setBackground(new java.awt.Color(102, 204, 255));
         jButtonLogin10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -98,7 +98,7 @@ public class HomePage extends javax.swing.JFrame {
                 jButtonLogin10ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 310, 120));
+        jPanel1.add(jButtonLogin10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 310, 120));
 
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
@@ -125,7 +125,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("All right reserved|2017");
+        jLabel1.setText("Signature Beauty & Fitness Zone");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jLabel1.setOpaque(true);
 
@@ -164,6 +164,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         //        new CustomerRecords().setVisible(true);
         //        this.dispose();
+        new SalePage().setVisible(true);
     }//GEN-LAST:event_jButtonLogin6ActionPerformed
 
     private void jButtonProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProductActionPerformed
@@ -176,8 +177,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButtonLogin9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin9ActionPerformed
         // TODO add your handling code here:
-        //        new CustomerPage().setVisible(true);
+                new CustomerForm().setVisible(true);
         //        this.dispose();
+        
     }//GEN-LAST:event_jButtonLogin9ActionPerformed
 
     private void jButtonLogin10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin10ActionPerformed

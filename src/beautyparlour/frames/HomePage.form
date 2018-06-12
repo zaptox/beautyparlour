@@ -86,11 +86,13 @@
               <Color blue="ff" green="cc" red="66" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Signature Beauty &amp; Fitness Zone"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/beautyparlour/util/signature_logodone.png"/>
+            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="150" y="70" width="-1" height="-1"/>
+              <AbsoluteConstraints x="250" y="30" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -116,7 +118,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="190" y="200" width="310" height="120"/>
+              <AbsoluteConstraints x="200" y="240" width="310" height="120"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -141,7 +143,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="520" y="200" width="310" height="120"/>
+              <AbsoluteConstraints x="530" y="240" width="310" height="120"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -166,7 +168,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="520" y="340" width="310" height="120"/>
+              <AbsoluteConstraints x="530" y="380" width="310" height="120"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -191,7 +193,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="190" y="340" width="310" height="120"/>
+              <AbsoluteConstraints x="200" y="380" width="310" height="120"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -250,7 +252,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="All right reserved|2017"/>
+        <Property name="text" type="java.lang.String" value="Signature Beauty &amp; Fitness Zone"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder roundedCorners="true" thickness="2">
