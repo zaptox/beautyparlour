@@ -69,6 +69,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonProduct.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/beautyparlour/util/services.png"))); // NOI18N
         jButtonProduct.setText("Services");
+        jButtonProduct.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonProductActionPerformed(evt);
