@@ -28,7 +28,7 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
     public int saveSaleDetails(SaleDetailBeans detail) {
         int i = 0;
         String query = "INSERT INTO sale_detail (`sale_id`, `customer_id`, `service_id`, `sale_date`, `price`)"
-                + " VALUES ('1', '1', '2', '2018-06-03', '100');";
+                + " VALUES (?, ?, ?, ?, ?);";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, detail.getSale_id());

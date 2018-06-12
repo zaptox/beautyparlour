@@ -6,6 +6,7 @@
 package beautyparlour.frames;
 
 import beautyparlour.bean.CustomerBeans;
+import beautyparlour.bean.PaymentDoneBeans;
 import beautyparlour.bean.ServiceBeans;
 import beautyparlour.dao.SaleDao;
 import beautyparlour.dao.SaleDetailsDao;
@@ -13,6 +14,7 @@ import beautyparlour.dao.ServiceDao;
 import beautyparlour.daoImpl.SaleDaoImpl;
 import beautyparlour.daoImpl.SaleDetailDapImpl;
 import beautyparlour.daoImpl.ServiceDaoImpl;
+import beautyparlour.dialog.CashNowLaterDialog;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -521,17 +523,24 @@ public class SalePage extends javax.swing.JFrame {
 
     private void discountFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_discountFieldKeyReleased
         // TODO add your handling code here:
+        
         if (discountField.equals("")) {
             totalField.setText(total_price + "");
 
-        } else if (jComboBox1.getSelectedItem().toString().equalsIgnoreCase("amount")) {
+        }
+        
+        else if (jComboBox1.getSelectedItem().toString().equalsIgnoreCase("amount")) {
 
             try {
                 int discount = Integer.parseInt(discountField.getText().toString());
                 int totalpriceget = total_price;
+                if(discount>totalpriceget){
+                    JOptionPane.showMessageDialog(this, "Discount is greater than Total price");
+                }
+                else{
                 totalpriceget -= discount;
                 totalField.setText(totalpriceget + "");
-
+                }
             } catch (Exception e) {
                 totalField.setText(total_price + "");
 
@@ -544,10 +553,18 @@ public class SalePage extends javax.swing.JFrame {
             try {
                 float discount_percent = Integer.parseInt(discountField.getText().toString());
                 float discount = (discount_percent * total_price) / 100;
-
+                
+                
                 int totalpriceget = total_price;
+                if(discount>totalpriceget){
+                    JOptionPane.showMessageDialog(this, "Discount is greater than Total price");
+                }
+                else{
+              
                 totalpriceget -= discount;
                 totalField.setText(totalpriceget + "");
+                }
+                
 
             } catch (Exception e) {
                 totalField.setText(total_price + "");
@@ -683,10 +700,10 @@ public class SalePage extends javax.swing.JFrame {
 
         }
 
-//        new CashNowLaterDialog(this, true, new PaymentDoneBeans(date + "", discount,
-//                discount_type,
-//                total_priceGot, customer_id, orderedProductList,
-//                sale_customer, 2), reference).setVisible(true);
+        new CashNowLaterDialog(this, true, new PaymentDoneBeans(date + "", discount,
+                discount_type,
+                total_priceGot, customer_id, selected_services_List,
+                sale_customer)).setVisible(true);
 
     }//GEN-LAST:event_generateButtonActionPerformed
 
