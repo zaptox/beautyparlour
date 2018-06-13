@@ -17,7 +17,7 @@ public interface SaleDetailsDao {
 
     public int saveSaleDetails(SaleDetailBeans detail);
 
-    public ArrayList<SaleDetailBeans> getAllSaleDetailbyCustomerId(int customer_id);
+    public ArrayList<SaleDetailBeans> getAllSaleDetailbyCustomerId(int customer_id,String date,int sale_id);
 
     public int modifySaleDetails(SaleDetailBeans details);
 
