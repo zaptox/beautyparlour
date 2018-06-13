@@ -34,13 +34,13 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin9 = new javax.swing.JButton();
         jButtonLogin10 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButtonProduct1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setBackground(new java.awt.Color(0, 204, 0));
@@ -48,7 +48,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(102, 204, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/beautyparlour/util/signature_logodone.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
         jButtonLogin6.setBackground(new java.awt.Color(102, 204, 255));
         jButtonLogin6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -61,7 +61,7 @@ public class HomePage extends javax.swing.JFrame {
                 jButtonLogin6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 310, 120));
+        jPanel1.add(jButtonLogin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 310, 120));
 
         jButtonProduct.setBackground(new java.awt.Color(102, 204, 255));
         jButtonProduct.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -74,7 +74,7 @@ public class HomePage extends javax.swing.JFrame {
                 jButtonProductActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 310, 120));
+        jPanel1.add(jButtonProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 210, 310, 120));
 
         jButtonLogin9.setBackground(new java.awt.Color(102, 204, 255));
         jButtonLogin9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -86,7 +86,7 @@ public class HomePage extends javax.swing.JFrame {
                 jButtonLogin9ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin9, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 310, 120));
+        jPanel1.add(jButtonLogin9, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 310, 120));
 
         jButtonLogin10.setBackground(new java.awt.Color(102, 204, 255));
         jButtonLogin10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -98,30 +98,27 @@ public class HomePage extends javax.swing.JFrame {
                 jButtonLogin10ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 310, 120));
+        jPanel1.add(jButtonLogin10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 310, 120));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 130));
-
-        jButtonProduct1.setBackground(new java.awt.Color(102, 204, 255));
-        jButtonProduct1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonProduct1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonProduct1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/beautyparlour/util/services.png"))); // NOI18N
-        jButtonProduct1.setText("Services");
-        jButtonProduct1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonProduct1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonProduct1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonProduct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 310, 120));
 
         jLabel1.setBackground(new java.awt.Color(102, 204, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Signature Beauty & Fitness Zone");
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 2, true));
         jLabel1.setOpaque(true);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 998, 54));
+
+        jButton1.setBackground(new java.awt.Color(102, 204, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Daily Report");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,15 +135,11 @@ public class HomePage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonProduct1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProduct1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonProduct1ActionPerformed
-
     private void jButtonLogin10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin10ActionPerformed
         // TODO add your handling code here:
         //        new SalePage().setVisible(true);
         //        this.dispose();
-        new  ShowCustomerPage().setVisible(true);
+        new ShowCustomerPage().setVisible(true);
         this.dispose();
         //        genReport();
     }//GEN-LAST:event_jButtonLogin10ActionPerformed
@@ -172,6 +165,12 @@ public class HomePage extends javax.swing.JFrame {
         //        this.dispose();
         new SalePage().setVisible(true);
     }//GEN-LAST:event_jButtonLogin6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new DailyReportPage().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,11 +209,11 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonLogin10;
     private javax.swing.JButton jButtonLogin6;
     private javax.swing.JButton jButtonLogin9;
     private javax.swing.JButton jButtonProduct;
-    private javax.swing.JButton jButtonProduct1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
