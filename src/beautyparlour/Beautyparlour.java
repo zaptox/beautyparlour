@@ -12,6 +12,7 @@ package beautyparlour;
 import beautyparlour.db.DbConnection;
 import beautyparlour.frames.HomePage;
 import beautyparlour.frames.ServiceForm;
+import beautyparlour.test.TestDemo;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -44,6 +45,10 @@ try {
         }
 
         new HomePage().setVisible(true);
+      //for (int i = 0 ; i <20000 ;i++){
+      //new TestDemo().saveCustomer(0);
+      //}
+              
 //       new  ServiceForm().setVisible(true);
         
     }
