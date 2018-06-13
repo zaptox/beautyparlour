@@ -7,9 +7,11 @@ package beautyparlour.frames;
 
 import beautyparlour.bean.CustomerBeans;
 import beautyparlour.bean.DailyReportBean;
-import beautyparlour.dao.ReportDao;
+import beautyparlour.bean.DailyServiceReportBean;
+import beautyparlour.dao.ServiceReportDao;
 import beautyparlour.daoImpl.CustomerDaoImpl;
 import beautyparlour.daoImpl.ReportDaoImpl;
+import beautyparlour.daoImpl.ServiceReportDaoImpl;
 import java.awt.Color;
 import java.awt.Font;
 import java.text.SimpleDateFormat;
@@ -25,24 +27,24 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Dell
  */
-public class DailyReportPage extends javax.swing.JFrame {
+public class DailyServiceReportPage extends javax.swing.JFrame {
 
     /**
      * Creates new form DailyReportPage
      */
-    DefaultTableModel tableModelReport;
-    ReportDao reportDao;
-    public ArrayList<DailyReportBean> daily_report_list;
+    DefaultTableModel tableModelServiceReport;
+    ServiceReportDao servicereportDao;
+    public ArrayList<DailyServiceReportBean> daily_service_report_list;
 
     TableRowSorter<DefaultTableModel> rowSorter = null;
 
-    public DailyReportPage() {
+    public DailyServiceReportPage() {
         initComponents();
                 this.getContentPane().setBackground(Color.white);
 
-        reportDao = new ReportDaoImpl();
-        tableModelReport = (DefaultTableModel) this.jTableReport.getModel();
-        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelReport);
+        servicereportDao = new ServiceReportDaoImpl();
+        tableModelServiceReport = (DefaultTableModel) this.jTableReport.getModel();
+        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelServiceReport);
         JTableHeader header = this.jTableReport.getTableHeader();
         header.setBackground(new Color(102, 204, 255));
         header.setForeground(new Color(255, 255, 255));
@@ -56,29 +58,30 @@ public class DailyReportPage extends javax.swing.JFrame {
     }
 
     public void showInTable(String date) {
-        int total_profit=0;
+        int total_amount=0;
         int total_customers=0;
-        tableModelReport.setRowCount(0);
+        tableModelServiceReport.setRowCount(0);
 
         int serial = 0;
-        daily_report_list = reportDao.getDailyReportBean(date);
+        daily_service_report_list = servicereportDao.getDailyReportBean(date);
 
-        for (DailyReportBean dailyReportBean : daily_report_list) {
+        for (DailyServiceReportBean dailyReportBean : daily_service_report_list) {
             Vector V = new Vector();
             serial++;
 
             V.add(serial);
-            V.add(dailyReportBean.getCustomer_name());
-            V.add(dailyReportBean.getSale_date());
-            V.add(dailyReportBean.getTotal_bill());
+            V.add(dailyReportBean.getService_name());
+            V.add(dailyReportBean.getCustomers());
+            V.add(dailyReportBean.getAmount());
 
-            total_profit+= dailyReportBean.getTotal_bill();
-            total_customers+=1;
-            tableModelReport.addRow(V);
+        total_customers+=dailyReportBean.getCustomers();
+        total_amount+=dailyReportBean.getAmount();
+            tableModelServiceReport.addRow(V);
         }
 
+        
         totatCustomerlabel.setText(""+total_customers);
-        totatProfitlabel.setText(""+total_profit);
+        totatProfitlabel.setText(""+total_amount);
     }
 
     /**
@@ -126,7 +129,7 @@ public class DailyReportPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "S#", "Customer_name", "Sale_date", "Total_bill"
+                "S#", "Service Name", "Customer", "Amount"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -148,7 +151,7 @@ public class DailyReportPage extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Daily Report");
+        jLabel1.setText("Daily Service Report");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/beautyparlour/util/report.PNG"))); // NOI18N
 
@@ -162,7 +165,7 @@ public class DailyReportPage extends javax.swing.JFrame {
         jLabel4.setText("Total Customers:");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("Total Profit:");
+        jLabel5.setText("Total Amount:");
 
         totatCustomerlabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         totatCustomerlabel.setText("0");
@@ -187,22 +190,14 @@ public class DailyReportPage extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(192, 192, 192)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel2)
+                                .addComponent(dateLabel)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(dateLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(167, 167, 167))
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(230, 230, 230))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(197, 197, 197)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -215,18 +210,31 @@ public class DailyReportPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(totatProfitlabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(327, 327, 327))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(276, 276, 276))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel1))
-                    .addComponent(jLabel2))
-                .addGap(24, 24, 24)
+                        .addComponent(jButton1)
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel1)
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -298,20 +306,21 @@ public class DailyReportPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DailyReportPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DailyServiceReportPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DailyReportPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DailyServiceReportPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DailyReportPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DailyServiceReportPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DailyReportPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DailyServiceReportPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DailyReportPage().setVisible(true);
+                new DailyServiceReportPage().setVisible(true);
             }
         });
     }

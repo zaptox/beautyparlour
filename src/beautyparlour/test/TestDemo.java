@@ -26,7 +26,7 @@ public class TestDemo {
     public int saveCustomer(int num) {
      
         int i = 0;
-        String query = "INSERT INTO `customer` ( `customer_name`, `customer_contact`, `customer_address`, `customer_inserted_date`, `customer_debt`) VALUES ( 'Rabia baji "+num+" ', '030982919"+num+"', 'Hussainabad', '2018-06-13', '0.0000'); ;";
+        String query = "INSERT INTO `services` ( `service_name`, `service_cost`, `service_date`) VALUES ( 'Hair color "+num+"', '100', '2018-06-13');";
         try {
                 Statement statement = con.createStatement();
             
