@@ -164,7 +164,7 @@ int customer_id;
         jTableCustomerSaleDetail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTableCustomerSaleDetail.setGridColor(new java.awt.Color(0, 0, 51));
         jTableCustomerSaleDetail.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        jTableCustomerSaleDetail.setSelectionForeground(new java.awt.Color(0, 240, 0));
+        jTableCustomerSaleDetail.setSelectionForeground(new java.awt.Color(0, 204, 255));
         jTableCustomerSaleDetail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableCustomerSaleDetailMouseClicked(evt);
@@ -215,7 +215,7 @@ int customer_id;
         jLabelCustomerName.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCustomerName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCustomerName.setText("Customer name");
-        jLabelCustomerName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
+        jLabelCustomerName.setBorder(new javax.swing.border.MatteBorder(null));
         jLabelCustomerName.setOpaque(true);
         jPanel1.add(jLabelCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 460, 50));
 
@@ -322,7 +322,7 @@ int customer_id;
         jTableCustomerSale.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTableCustomerSale.setGridColor(new java.awt.Color(0, 0, 51));
         jTableCustomerSale.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        jTableCustomerSale.setSelectionForeground(new java.awt.Color(0, 240, 0));
+        jTableCustomerSale.setSelectionForeground(new java.awt.Color(0, 204, 255));
         jTableCustomerSale.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableCustomerSaleMouseClicked(evt);
